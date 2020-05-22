@@ -1,10 +1,14 @@
 import React from 'react';
+import TrailDetails from '../components/TrailDetails'
 
 class TrailsShowPage extends React.Component{
+    
+    
     render () {
-        return (
-            <div> This is the Trails Show Page</div>
-        )
+        return this.props.trail? (
+            <TrailDetails trail={this.props.trail}/>
+        ): null
+ 
     }
 }
 
