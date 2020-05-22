@@ -1,21 +1,58 @@
 import React from 'react'
-import {Card} from 'antd'
+import { Card, Avatar, Col } from 'antd';
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
+const { Meta } = Card;
+// import all_clear from 'hikes_frontend/assets/all_clear.png' 
 
 const Trail = (props) => {
-    return(
-        <div>
-            <Card />
-            <h3>Trail Info:</h3>
-            <p> 
-                Name: {props.trail.name}
-                <br></br>
-                Length: {props.trail.length}
 
-            </p>
+    const gridStyle = {
+        width: '25%',
+        textAlign: 'center',
+      };
 
-        </div>
+    const {name, location, img_medium, condition_status} = props.trail
+    
+    const getIcon = () =>{
+        if (condition_status === "All Clear"){
+            return 'hikes_frontend/assets/all_clear.png'}
+        
+    }
 
+
+
+
+
+    
+
+    return(  
+        <Col span={8}>
+                <Card
+                hoverable
+                style={gridStyle, { width: 300 }}
+                cover={
+                <img
+                    alt="example"
+                    height={200}
+                    src={img_medium}
+                />
+                }
+                actions={[
+                <EditOutlined key="edit" />,
+                <EllipsisOutlined key="ellipsis" />,
+                ]}
+                 >
+                    <Meta
+                    avatar={<img height={10} width={10} src={getIcon()}/>}
+                    title={name}
+                    description={location}
+                    />
+             </Card>
+         </Col>
     )
 }
 
 export default Trail 
+
+
+
