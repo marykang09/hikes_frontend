@@ -16,7 +16,7 @@ const TrailDetails = (props) => {
                 Descent: {descent}<br></br>
                 Summary: {summary}<br></br>
             </p>
-             <button>Want to hike {<PlusCircleFilled />}</button>
+            <button>Want to hike {<PlusCircleFilled />}</button>
             <button>Already hiked? {<CheckCircleFilled />}</button>
             
         </div>

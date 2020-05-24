@@ -1,10 +1,11 @@
 import React from 'react';
 import TrailsPage from './containers/TrailsPage'
-import {Switch, Route, Link} from "react-router-dom";
+import {Switch, Route, Link, Redirect} from "react-router-dom";
 import NavBar from './components/NavBar'
 import About from './containers/About'
 import TrailsShowPage from './containers/TrailsShowPage'
 import MyHikesPage from './containers/MyHikesPage'
+import LoginForm from './components/loginForm'
 import './App.css';
 
 
@@ -13,7 +14,8 @@ class App extends React.Component{
     constructor(){
       super()
       this.state = {
-          trails: []
+          trails: [],
+          currentUser: null
       }
   }
 
@@ -24,6 +26,12 @@ class App extends React.Component{
           this.setState({
               trails: data
           }))
+  }
+
+  changeCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
   }
 
   render(){
@@ -46,7 +54,10 @@ class App extends React.Component{
       
         />
         <Route exact path="/myhikes" component={MyHikesPage}/>
-        
+       
+        <Route exact path="/login" render={ () => 
+              this.state.currentUser === null? < LoginForm changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
+          
       </div>
     )
     }

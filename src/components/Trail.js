@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Avatar, Col } from 'antd';
+import { Tooltip, Card, Avatar, Col } from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined, PlusCircleFilled, CheckCircleFilled } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 // import all_clear from 'hikes_frontend/assets/all_clear.png' 
@@ -33,8 +33,12 @@ const Trail = (props) => {
                     />
                     }
                     actions={[
-                        <button>Want to hike {<PlusCircleFilled />}</button>,
-                        <button>Already hiked? {<CheckCircleFilled />}</button>
+                    <Tooltip title='want to hike'>
+                        <PlusCircleFilled />
+                      </Tooltip>,
+                    <Tooltip title='already hiked?'>
+                    <CheckCircleFilled />
+                    </Tooltip>
                     ]}
                     >
                         <Meta
