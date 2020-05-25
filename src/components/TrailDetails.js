@@ -1,8 +1,9 @@
 import React from 'react'
 import {PlusCircleFilled, CheckCircleFilled} from '@ant-design/icons'
+import GoogleMaps from './googleMaps'
 
 const TrailDetails = (props) => {
-    const {name, img_medium, location, difficulty, length, ascent, descent, summary} = props.trail
+    const {name, img_medium, location, difficulty, length, ascent, descent, summary, latitude, longitude} = props.trail
     return(
         <div>
             <br></br>
@@ -18,7 +19,9 @@ const TrailDetails = (props) => {
             </p>
             <button>Want to hike {<PlusCircleFilled />}</button>
             <button>Already hiked? {<CheckCircleFilled />}</button>
-            
+                    <div>
+                        <GoogleMaps longitude={longitude} latitude={latitude} />
+                    </div>
         </div>
     )
 }

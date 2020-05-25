@@ -40,6 +40,10 @@ class NavBar extends React.Component{
     //       current: e.key,
     //     })
 
+  
+  
+
+
 
     render(){
         return(
@@ -53,7 +57,8 @@ class NavBar extends React.Component{
                         <Link to="/about">About</Link>
                     </Menu.Item>
 
-                    <Menu.Item key="alipay" onClick={this.showLogin}>
+                    {this.props.currentUser === null? 
+                    <Menu.Item key="login" onClick={this.showLogin}>
                         <Link to="/login">Login</Link>
                         {/* <Modal
                             title="Login"
@@ -64,6 +69,17 @@ class NavBar extends React.Component{
                             <LoginForm />
                         </Modal>  */}
                     </Menu.Item>
+                    : 
+                         <Menu.Item key="my-hikes" >
+                            <Link to="/myhikes">My Hikes</Link>
+                          </Menu.Item>
+                      }
+                  {this.props.currentUser === null?
+                      null : 
+                     <Menu.Item key="logout" >
+                      Logout
+                    </Menu.Item> }
+                    
                 </Menu>
 
 

@@ -37,7 +37,7 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <NavBar />
+        <NavBar currentUser={this.state.currentUser}  />
         <Route 
           exact path="/" 
           render={() => {
@@ -53,7 +53,8 @@ class App extends React.Component{
         }}
       
         />
-        <Route exact path="/myhikes" component={MyHikesPage}/>
+
+        <Route exact path="/myhikes" render={() => this.state.currentUser === null? <Redirect to="/login" /> : < MyHikesPage /> } />
        
         <Route exact path="/login" render={ () => 
               this.state.currentUser === null? < LoginForm changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
