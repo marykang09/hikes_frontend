@@ -1,8 +1,11 @@
 import React from 'react'
 import Iframe from 'react-iframe'
 
+const ck = require('ckey');
+
 const GoogleMaps = (props) => {
-    let url = `https://www.google.com/maps/embed/v1/search?q=${props.latitude}%2C${props.longitude}&key=AIzaSyDw56t2Ne5vW5va_yaMLhS1U7cGZJU6YO0`
+    let apiKey = ck.API_KEY
+    let url = `https://www.google.com/maps/embed/v1/search?q=${props.latitude}%2C${props.longitude}&key=${apiKey}`
     return (
         <Iframe url={url}
         width="400px"

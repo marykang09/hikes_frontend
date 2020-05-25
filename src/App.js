@@ -42,18 +42,13 @@ class App extends React.Component{
           exact path="/" 
           render={() => {
               return (< TrailsPage trails={this.state.trails}/>)}} />
-
-
         <Route exact path="/about" component={About}/>
         <Route exact path="/trails/:id" render={ (routerProps) => {
-              console.log(routerProps)
             let id = routerProps.match.params.id
             let trailShow = this.state.trails.find(t => t.id == id)
             return (< TrailsShowPage trail={trailShow} />)
         }}
-      
         />
-
         <Route exact path="/myhikes" render={() => this.state.currentUser === null? <Redirect to="/login" /> : < MyHikesPage /> } />
        
         <Route exact path="/login" render={ () => 
