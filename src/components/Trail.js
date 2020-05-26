@@ -20,7 +20,7 @@ const Trail = (props) => {
     // }
 
     // we have to know if this is trail on the user's hike list and the data for that "hike"
-    console.log(props.myHikes)
+
     const thisHike = props.myHikes.find(hike => hike.trail.name === props.trail.name)
 
 
@@ -30,7 +30,7 @@ const Trail = (props) => {
             return []
             } else {
             return [<Tooltip title='already hiked?'>
-            <CheckCircleFilled />
+            <CheckCircleFilled onClick={() => props.handleCompletedHike(thisHike)} />
           </Tooltip>]
             }
         }else {
@@ -50,13 +50,14 @@ const Trail = (props) => {
         <Col span={8}>
                 <Card  
                     hoverable
-                    style={gridStyle, { width: 300 }}
+                    style={gridStyle, { width: 'auto' }}
                     cover={
                         // Link to works when you click on the image, not when you click on the name of the hike. 
                         <Link to={`trails/${id}`}>
                             <img
                                 alt="example"
                                 height={200}
+                                width={400}
                                 src={img_medium}
                                 />
                         </Link>
