@@ -4,6 +4,25 @@ import GoogleMaps from './googleMaps'
 
 const TrailDetails = (props) => {
     const {name, img_medium, location, difficulty, length, ascent, descent, summary, latitude, longitude} = props.trail
+    const thisHike = props.myHikes.find(hike => hike.trail.id === props.trail.id)
+    
+    const getButtons = () => {
+    if (thisHike) {
+        if(thisHike.completed){
+            return (<div></div>)
+        }else {
+            return <button>Already hiked? {<CheckCircleFilled />}</button>
+        }
+    } else {
+    return (
+        <div>
+            <button onClick={() => props.handleWantToHike(props.trail)}>Want to hike {<PlusCircleFilled />}</button>
+            <button>Already hiked? {<CheckCircleFilled />}</button>
+        </div>
+        )
+    } 
+    }   
+
     return(
         <div>
             <br></br>
@@ -17,8 +36,8 @@ const TrailDetails = (props) => {
                 Descent: {descent}<br></br>
                 Summary: {summary}<br></br>
             </p>
-            <button>Want to hike {<PlusCircleFilled />}</button>
-            <button>Already hiked? {<CheckCircleFilled />}</button>
+            <div>{getButtons()}</div>
+           
                     <div>
                         <GoogleMaps longitude={longitude} latitude={latitude} />
                     </div>

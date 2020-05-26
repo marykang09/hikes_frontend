@@ -9,7 +9,7 @@ class TrailsPage extends React.Component{
         return (
             <div> 
                 <h1>Trails</h1>
-                < TrailsContainer trails={this.props.trails} />
+                < TrailsContainer handleWantToHike={this.props.handleWantToHike} myHikes={this.props.myHikes} trails={this.props.trails} />
             
             </div>
         )

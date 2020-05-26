@@ -5,11 +5,13 @@ class TrailsShowPage extends React.Component{
     
     
     render () {
+
         return this.props.trail? (
-            <TrailDetails trail={this.props.trail}/>
+            <TrailDetails handleWantToHike={this.props.handleWantToHike} myHikes={this.props.myHikes} trail={this.props.trail}/>
         ): null
  
     }
+    
 }
 
 export default TrailsShowPage
