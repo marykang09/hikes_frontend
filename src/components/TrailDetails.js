@@ -11,7 +11,7 @@ const TrailDetails = (props) => {
         if(thisHike.completed){
             return (<div></div>)
         }else {
-            return <button>Already hiked? {<CheckCircleFilled onClick={() => props.handleCompletedHike(thisHike)} />}</button>
+            return <button>Already hiked? {<CheckCircleFilled onClick={() => props.handlePatchHike(thisHike,{completed: true})} />}</button>
         }
     } else {
     return (

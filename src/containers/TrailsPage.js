@@ -10,7 +10,7 @@ class TrailsPage extends React.Component{
             <div> 
                 <h1>Trails</h1>
                 < TrailsContainer 
-                                handleCompletedHike={this.props.handleCompletedHike}
+                                handlePatchHike={this.props.handlePatchHike}
                                 handleNewHike={this.props.handleNewHike} 
                                 myHikes={this.props.myHikes} 
                                 trails={this.props.trails} />
