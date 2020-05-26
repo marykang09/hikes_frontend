@@ -20,6 +20,7 @@ const Trail = (props) => {
     // }
 
     // we have to know if this is trail on the user's hike list and the data for that "hike"
+    console.log(props.myHikes)
     const thisHike = props.myHikes.find(hike => hike.trail.name === props.trail.name)
 
 
@@ -35,10 +36,10 @@ const Trail = (props) => {
         }else {
             return [
                 <Tooltip title='want to hike'>
-                    <PlusCircleFilled onClick={()=>props.handleWantToHike(props.trail)} />
+                    <PlusCircleFilled onClick={()=>props.handleNewHike(props.trail, false)} />
                   </Tooltip>,
                 <Tooltip title='already hiked?'>
-                  <CheckCircleFilled />
+                  <CheckCircleFilled onClick={()=>props.handleNewHike(props.trail, true)}/>
                 </Tooltip>
                 ]
         }

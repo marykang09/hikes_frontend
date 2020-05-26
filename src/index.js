@@ -7,11 +7,9 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  <React.StrictMode>
     <Router>
        <App />
-    </Router>
-  </React.StrictMode>,
+    </Router>,
   document.getElementById('root')
 );
 

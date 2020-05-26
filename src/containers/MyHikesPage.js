@@ -10,16 +10,15 @@ class MyHikesPage extends React.Component{
                 <h3>My Completed Hikes</h3>
                 <div>
                     <Row>
-                     {this.props.hikes.filter(hike=> hike.completed).map(h => < Trail myHikes={this.props.hikes} trail={h.trail} key={h.trail.id} /> )}
+                     {this.props.myHikes.filter(hike=> hike.completed).map(h => < Trail myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> )}
                      </Row>
                 </div>
                 <p>
-                    {console.log(this.props.hikes)}
                 </p>
                 <h3>Hikes To Try</h3>
                 <div>
                     <Row>
-                     {this.props.hikes.filter(hike=> hike.completed === false).map(h => < Trail myHikes={this.props.hikes} trail={h.trail} key={h.trail.id} /> )}
+                     {this.props.myHikes.filter(hike=> hike.completed === false).map(h => < Trail myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> )}
                      </Row>
                 </div>
             </div>

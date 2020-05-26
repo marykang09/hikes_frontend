@@ -16,8 +16,8 @@ const TrailDetails = (props) => {
     } else {
     return (
         <div>
-            <button onClick={() => props.handleWantToHike(props.trail)}>Want to hike {<PlusCircleFilled />}</button>
-            <button>Already hiked? {<CheckCircleFilled />}</button>
+            <button onClick={() => props.handleNewHike(props.trail, false)}>Want to hike {<PlusCircleFilled />}</button>
+            <button onClick={() => props.handleNewHike(props.trail, true)}>Already hiked? {<CheckCircleFilled />}</button>
         </div>
         )
     } 
