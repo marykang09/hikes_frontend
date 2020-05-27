@@ -1,5 +1,6 @@
 import React from 'react';
 import TrailsContainer from './TrailsContainer'
+import SearchBar from '../components/SearchBar'
 
 
 class TrailsPage extends React.Component{
@@ -9,6 +10,7 @@ class TrailsPage extends React.Component{
         return (
             <div> 
                 <h1>Trails</h1>
+                < SearchBar handleSearchTerm={this.props.handleSearchTerm} searchTerm={this.props.searchTerm}/>
                 < TrailsContainer 
                                 handleRemoveHike={this.props.handleRemoveHike}
                                 handlePatchHike={this.props.handlePatchHike}

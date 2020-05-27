@@ -16,7 +16,8 @@ class App extends React.Component{
       this.state = {
           trails: [],
           currentUser: null,
-          myHikes: []
+          myHikes: [],
+          searchTerm: ""
       }
   }
 
@@ -138,16 +139,25 @@ class App extends React.Component{
     
   }
 
+  handleSearchTerm = (event) => {
+    this.setState({
+      searchTerm: event.target.value
+    })
+  }
+
   render(){
     // sort my hikes here by favorite status  a.sort(function(a,b){return a.xx-b.xx});
-    const myHikesArray = this.state.myHikes.sort(function(a, b){return b.favorite-a.favorite})
+    let myHikesArray = this.state.myHikes.filter(hike=> hike.trail.location.toUpperCase().includes(this.state.searchTerm.toUpperCase()))
+    myHikesArray.sort(function(a, b){return b.favorite-a.favorite})
+    const trailsArray = this.state.trails.filter(trail => trail.location.toUpperCase().includes(this.state.searchTerm.toUpperCase()))
+    
     return (
       <div className="App">
         <NavBar currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
         <Route 
           exact path="/" 
           render={() => {
-              return (< TrailsPage handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trails={this.state.trails}/>)}} />
+              return (< TrailsPage searchTerm={this.state.searchTerm} handleSearchTerm={this.handleSearchTerm} handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trails={trailsArray}/>)}} />
         <Route exact path="/about" component={About}/>
         <Route exact path="/trails/:id" render={ (routerProps) => {
             let id = routerProps.match.params.id
@@ -160,6 +170,8 @@ class App extends React.Component{
           exact path="/myhikes" 
           render={() => this.state.currentUser === null ? 
                                           <Redirect to="/login" /> : < MyHikesPage 
+                                                                          searchTerm={this.state.searchTerm} 
+                                                                          handleSearchTerm={this.handleSearchTerm}
                                                                          handleRemoveHike={this.handleRemoveHike}
                                                                           myHikes={myHikesArray}
                                                                           handlePatchHike={this.handlePatchHike} /> } />

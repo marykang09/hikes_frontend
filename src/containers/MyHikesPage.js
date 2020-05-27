@@ -1,12 +1,16 @@
 import React from 'react'
 import {Row} from 'antd'
 import Trail from '../components/Trail'
+import SearchBar from '../components/SearchBar'
 
 class MyHikesPage extends React.Component{
     render(){
         return(
             <div>
                 <h2>My Hikes Page</h2>
+                <SearchBar 
+                    handleSearchTerm={this.props.handleSearchTerm} 
+                    searchTerm={this.props.searchTerm}/>
                 <h3>My Completed Hikes</h3>
                 <div>
                     <Row>

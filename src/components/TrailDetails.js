@@ -9,7 +9,7 @@ const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 const TrailDetails = (props) => {
     const {name, img_medium, location, difficulty, length, ascent, descent, summary, latitude, longitude} = props.trail
     const thisHike = props.myHikes.find(hike => hike.trail.id === props.trail.id)
-    
+
 
     const handleChange = value => {
          props.handlePatchHike(thisHike, {rating: value})
