@@ -32,18 +32,14 @@ class NavBar extends React.Component{
     })
   }
 
+  
+
 
     // handleClick = e => {
     //     console.log('click ', e)
     //     this.setState({
     //       current: e.key,
     //     })
-
-  
-  
-
-
-
     render(){
         return(
             <div>
@@ -75,7 +71,7 @@ class NavBar extends React.Component{
                       }
                   {this.props.currentUser === null?
                       null : 
-                     <Menu.Item key="logout" >
+                     <Menu.Item key="logout" onClick={this.props.handleLogout}>
                       Logout
                     </Menu.Item> }
                     

@@ -21,12 +21,35 @@ class App extends React.Component{
   }
 
   componentDidMount(){
+      //fetch trails
       fetch('http://localhost:3000/trails')
       .then(resp => resp.json())
       .then(data => {
           this.setState({
               trails: data
         })})
+       
+      //check if user is logged in and authenticated
+      if(localStorage.getItem("token")){
+        //fetch request with new route
+        fetch('http://localhost:3000/users/decode_token', {
+          headers: {
+            "Authenticate": localStorage.token
+          }
+        })
+          .then(response => response.json())
+          .then(userData => {
+            this.changeCurrentUser(userData)
+          })
+
+      }
+  }
+
+  handleLogout = () => {
+    localStorage.clear()
+    this.setState({
+      currentUser: null 
+    })
   }
 
 
@@ -95,12 +118,32 @@ class App extends React.Component{
 
   }
 
+  handleNewUser = (userObj) => {
+    const obj ={
+      first_name: userObj.firstname,
+      last_name: userObj.lastname,
+      username: userObj.username,
+      password: userObj.password
+    }
+    fetch("http://localhost:3000/users", {
+      method: 'POST',
+      headers: {'Content-Type' : 'application/json' },
+      body: JSON.stringify(obj)
+    })
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem("token", data.token)
+      this.changeCurrentUser(data.user_data)
+    })
+    
+  }
+
   render(){
     // sort my hikes here by favorite status  a.sort(function(a,b){return a.xx-b.xx});
     const myHikesArray = this.state.myHikes.sort(function(a, b){return b.favorite-a.favorite})
     return (
       <div className="App">
-        <NavBar currentUser={this.state.currentUser}  />
+        <NavBar currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
         <Route 
           exact path="/" 
           render={() => {
@@ -112,7 +155,7 @@ class App extends React.Component{
             return (< TrailsShowPage handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trail={trailShow} />)
         }}
         />
-        <Route exact path='/signup' component={SignUpForm} />
+        <Route exact path='/signup' render={() => this.state.currentUser === null? <SignUpForm handleNewUser={this.handleNewUser}/> : <Redirect to="/myhikes"/>} />
         <Route 
           exact path="/myhikes" 
           render={() => this.state.currentUser === null ? 

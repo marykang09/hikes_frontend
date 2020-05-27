@@ -6,10 +6,45 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 
 class SignUpForm extends React.Component {
  
+    constructor(){
+      super()
+      this.state = {
+        firstname: '',
+        lastname: '', 
+        username: '',
+        password: ''
+      }
+    }
 
-validateUsername = () => {
-    console.log('run fetch call to check username')
-}
+    validateUsername = () => {
+        console.log('run fetch call to check username')
+    }
+
+    onFirstNameChange = (event) => {
+      this.setState({firstname: event.target.value})
+    }
+
+    onLastNameChange = (event) => {
+      this.setState({lastname: event.target.value})
+    }
+
+    onUsernameChange = (event) => {
+      this.setState({username: event.target.value})
+    }
+    onPasswordChange = (event) => {
+      this.setState({password: event.target.value})
+    }
+
+
+    handleClearAndSubmit = () => {
+      this.props.handleNewUser(this.state)
+      this.setState({
+        firstname: '',
+        lastname: '', 
+        username: '',
+        password: ''
+      })
+    }
 
 render(){
   return (
@@ -22,6 +57,8 @@ render(){
     <Form.Item
         name="firstname"
         label="First name"
+        value={this.state.firstname}
+        onChange={this.onFirstNameChange}
         rules={[{
             required: true,
             message: 'Please input a firstname',
@@ -33,6 +70,8 @@ render(){
       <Form.Item
         name="lastname"
         label="Last name"
+        value={this.state.lastname}
+        onChange={this.onLastNameChange}
         rules={[{
             required: true,
             message: 'Please input a lastname',
@@ -44,6 +83,8 @@ render(){
       <Form.Item
         name="username"
         label="username"
+        value={this.state.username}
+        onChange={this.onUsernameChange}
         rules={[{
             required: true,
             message: 'Please input a username',
@@ -56,6 +97,8 @@ render(){
       <Form.Item
         name="password"
         label="Password"
+        value={this.state.password}
+        onChange={this.onPasswordChange}
         rules={[
           {
             required: true,
@@ -92,8 +135,8 @@ render(){
 
       
       <Form.Item >
-        <Button type="primary" htmlType="submit">
-          SignUp
+        <Button type="primary" htmlType="submit" onClick={this.handleClearAndSubmit}>
+          Sign Up
         </Button>
       </Form.Item>
     </Form>

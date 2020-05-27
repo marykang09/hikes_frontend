@@ -35,10 +35,12 @@ class loginForm extends React.Component {
         })
         .then((response) => response.json())
         .then(data => {
+            console.log("response", data)
             if (data.error_message){
                 alert(data.error_message)
             }else {
-                this.props.changeCurrentUser(data)
+                localStorage.setItem("token", data.token)
+                this.props.changeCurrentUser(data.user_data)
             }
         })
     }
