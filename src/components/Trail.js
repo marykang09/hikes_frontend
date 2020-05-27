@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tooltip, Card, Avatar, Col } from 'antd';
-import { EditOutlined, EllipsisOutlined, SettingOutlined, PlusCircleFilled, CheckCircleFilled } from '@ant-design/icons';
+import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import { Rate } from 'antd';
 // import all_clear from 'hikes_frontend/assets/all_clear.png' 

@@ -1,8 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 import { Menu, Modal } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import LoginForm from './loginForm'
+import { CompassOutlined, BulbOutlined, UserOutlined } from '@ant-design/icons';
 const { SubMenu } = Menu;
 
 class NavBar extends React.Component{
@@ -49,11 +48,11 @@ class NavBar extends React.Component{
         return(
             <div>
                 <Menu mode="horizontal">
-                    <Menu.Item key="trails" icon={<MailOutlined />}>
+                    <Menu.Item key="trails" icon={<CompassOutlined/>}>
                         <Link to="/">Trails</Link>
                     </Menu.Item>
                     
-                    <Menu.Item key="about"  icon={<AppstoreOutlined />}>
+                    <Menu.Item key="about"  icon={<BulbOutlined />}>
                         <Link to="/about">About</Link>
                     </Menu.Item>
 
@@ -70,7 +69,7 @@ class NavBar extends React.Component{
                         </Modal>  */}
                     </Menu.Item>
                     : 
-                         <Menu.Item key="my-hikes" >
+                         <Menu.Item key="my-hikes"icon={<UserOutlined />} >
                             <Link to="/myhikes">My Hikes</Link>
                           </Menu.Item>
                       }
