@@ -41,7 +41,7 @@ class App extends React.Component{
           .then(response => response.json())
           .then(userData => {
             this.changeCurrentUser(userData)
-          })
+          }) //update currentuser with signed in user
 
       }
   }
@@ -52,7 +52,6 @@ class App extends React.Component{
       currentUser: null 
     })
   }
-
 
   fetchUserHikes = (user) => {
     fetch(`http://localhost:3000/users/${user.id}`)
@@ -116,7 +115,6 @@ class App extends React.Component{
     this.setState({
       myHikes: updatedMyHikes
     })
-
   }
 
   handleNewUser = (userObj) => {
@@ -153,31 +151,53 @@ class App extends React.Component{
     
     return (
       <div className="App">
-        <NavBar currentUser={this.state.currentUser} handleLogout={this.handleLogout} />
+        <NavBar 
+          currentUser={this.state.currentUser} 
+          handleLogout={this.handleLogout} />
         <Route 
           exact path="/" 
           render={() => {
-              return (< TrailsPage searchTerm={this.state.searchTerm} handleSearchTerm={this.handleSearchTerm} handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trails={trailsArray}/>)}} />
-        <Route exact path="/about" component={About}/>
-        <Route exact path="/trails/:id" render={ (routerProps) => {
-            let id = routerProps.match.params.id
-            let trailShow = this.state.trails.find(t => t.id == id)
-            return (< TrailsShowPage handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trail={trailShow} />)
-        }}
-        />
-        <Route exact path='/signup' render={() => this.state.currentUser === null? <SignUpForm handleNewUser={this.handleNewUser}/> : <Redirect to="/myhikes"/>} />
+              return (< TrailsPage 
+                          searchTerm={this.state.searchTerm} 
+                          handleSearchTerm={this.handleSearchTerm} 
+                          handlePatchHike={this.handlePatchHike} 
+                          handleRemoveHike={this.handleRemoveHike} 
+                          handleNewHike={this.handleNewHike} 
+                          myHikes={this.state.myHikes} 
+                          trails={trailsArray}/>)}} />
+        <Route 
+          exact path="/about" 
+          component={About}/>
+        <Route 
+          exact path="/trails/:id" 
+          render={ (routerProps) => {
+                    let id = routerProps.match.params.id
+                    let trailShow = this.state.trails.find(t => t.id == id)
+                    return (< TrailsShowPage 
+                                handlePatchHike={this.handlePatchHike} 
+                                handleRemoveHike={this.handleRemoveHike} 
+                                handleNewHike={this.handleNewHike} 
+                                myHikes={this.state.myHikes} 
+                                trail={trailShow} />)}} />
+        <Route 
+          exact path='/signup' 
+          render={() => this.state.currentUser === null? <SignUpForm 
+                                                            handleNewUser={this.handleNewUser}/> : <Redirect to="/myhikes"/>} />
         <Route 
           exact path="/myhikes" 
           render={() => this.state.currentUser === null ? 
                                           <Redirect to="/login" /> : < MyHikesPage 
                                                                           searchTerm={this.state.searchTerm} 
                                                                           handleSearchTerm={this.handleSearchTerm}
-                                                                         handleRemoveHike={this.handleRemoveHike}
+                                                                          handleRemoveHike={this.handleRemoveHike}
                                                                           myHikes={myHikesArray}
                                                                           handlePatchHike={this.handlePatchHike} /> } />
        
-        <Route exact path="/login" render={ () => 
-              this.state.currentUser === null? < LoginForm changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
+        <Route 
+          exact path="/login" 
+          render={ () => 
+              this.state.currentUser === null? < LoginForm 
+                                                  changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
           
       </div>
     )
@@ -185,15 +205,3 @@ class App extends React.Component{
 }
 
 export default App;
-
-
-{/* <Route exact path="/paintings/:id" render={
-            (routerProps) => {
-              //get the ID here in this function
-              let id = routerProps.match.params.id
-              //find the painting object in my paintingsList [] with this id
-              let painting = this.state.paintingsList.find(p => p.id == id)
-              console.log("what is my painting?", painting)
-              return <PaintingDetails painting={painting}/>
-            }
-          } */}

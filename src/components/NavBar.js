@@ -32,53 +32,52 @@ class NavBar extends React.Component{
     })
   }
 
-  
-
-
     // handleClick = e => {
     //     console.log('click ', e)
     //     this.setState({
     //       current: e.key,
     //     })
-    render(){
-        return(
-            <div>
-                <Menu mode="horizontal">
-                    <Menu.Item key="trails" icon={<CompassOutlined/>}>
-                        <Link to="/">Trails</Link>
-                    </Menu.Item>
-                    
-                    <Menu.Item key="about"  icon={<BulbOutlined />}>
-                        <Link to="/about">About</Link>
-                    </Menu.Item>
+  render(){
+      return(
+          <div>
+              <Menu mode="horizontal">
 
-                    {this.props.currentUser === null? 
-                    <Menu.Item key="login" onClick={this.showLogin}>
-                        <Link to="/login">Login</Link>
-                        {/* <Modal
-                            title="Login"
-                            visible={this.state.loginVisible}
-                            onOk={() => this.handleOk.bind(this)}
-                            onCancel={() => this.handleCancel.bind(this)}
-                            >
-                            <LoginForm />
-                        </Modal>  */}
-                    </Menu.Item>
-                    : 
-                         <Menu.Item key="my-hikes"icon={<UserOutlined />} >
-                            <Link to="/myhikes">My Hikes</Link>
-                          </Menu.Item>
-                      }
-                  {this.props.currentUser === null?
-                      null : 
-                     <Menu.Item key="logout" onClick={this.props.handleLogout}>
-                      Logout
-                    </Menu.Item> }
-                    
-                </Menu>
+                  <Menu.Item key="trails" icon={<CompassOutlined/>}>
+                      <Link to="/">Trails</Link>
+                  </Menu.Item>
+                  
 
 
-             </div>
+                  {this.props.currentUser === null? 
+                  <Menu.Item key="login" onClick={this.showLogin}>
+                      <Link to="/login">Login</Link>
+                      {/* <Modal
+                          title="Login"
+                          visible={this.state.loginVisible}
+                          onOk={() => this.handleOk.bind(this)}
+                          onCancel={() => this.handleCancel.bind(this)}
+                          >
+                          <LoginForm />
+                      </Modal>  */}
+                  </Menu.Item>
+                  : 
+                        <Menu.Item key="my-hikes"icon={<UserOutlined />} >
+                          <Link to="/myhikes">My Hikes</Link>
+                        </Menu.Item>
+                    }
+
+                  <Menu.Item key="about"  icon={<BulbOutlined />}>
+                      <Link to="/about">About</Link>
+                  </Menu.Item>
+
+                {this.props.currentUser === null?
+                    null : 
+                    <Menu.Item key="logout" onClick={this.props.handleLogout}>
+                    Logout
+                  </Menu.Item> }
+                  
+              </Menu>
+           </div>
         )
     }
 }

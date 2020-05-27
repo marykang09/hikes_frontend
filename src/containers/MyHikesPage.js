@@ -7,11 +7,11 @@ class MyHikesPage extends React.Component{
     render(){
         return(
             <div>
-                <h2>My Hikes Page</h2>
+                <h1>My Hikes</h1>
                 <SearchBar 
                     handleSearchTerm={this.props.handleSearchTerm} 
                     searchTerm={this.props.searchTerm}/>
-                <h3>My Completed Hikes</h3>
+                <h2> My Completed Hikes </h2>
                 <div>
                     <Row>
                      {this.props.myHikes.filter(hike=> hike.completed).map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> )}
@@ -19,7 +19,7 @@ class MyHikesPage extends React.Component{
                 </div>
                 <p>
                 </p>
-                <h3>Hikes To Try</h3>
+                <h2> I want to hike... </h2>
                 <div>
                     <Row>
                      {this.props.myHikes.filter(hike=> hike.completed === false).map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> )}
