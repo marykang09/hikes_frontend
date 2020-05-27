@@ -1,8 +1,7 @@
 import React from 'react'
-import { Tooltip, Card, Avatar, Col } from 'antd';
+import { Tooltip, Card, Avatar, Col, Rate } from 'antd';
 import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone, CloseCircleOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
-import { Rate } from 'antd';
 // import all_clear from 'hikes_frontend/assets/all_clear.png' 
 
 const { Meta } = Card;
@@ -20,7 +19,7 @@ class Trail extends React.Component {
 
   handleChange = value => {
         const thisHike = this.props.myHikes.find(hike => hike.trail.name === this.props.trail.name)
-      this.setState({value})
+    //   this.setState({value})
       this.props.handlePatchHike(thisHike, {rating: value})
   };
 
@@ -49,7 +48,7 @@ class Trail extends React.Component {
                     
                     //if hike is completed, show the rating, else show the -completed- button
                     thisHike.completed? array.unshift(<span>
-                                                    <Rate tooltips={desc} onChange={this.handleChange} value={value} />
+                                                    <Rate tooltips={desc} onChange={this.handleChange} value={thisHike.rating} />
                                                      {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
                                                     </span>):
                                                     array.unshift(  <Tooltip title='already hiked?'>
