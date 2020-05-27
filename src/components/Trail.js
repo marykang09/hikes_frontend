@@ -1,6 +1,6 @@
 import React from 'react'
 import { Tooltip, Card, Avatar, Col } from 'antd';
-import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone } from '@ant-design/icons';
+import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone, CloseCircleOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import { Rate } from 'antd';
 // import all_clear from 'hikes_frontend/assets/all_clear.png' 
@@ -48,17 +48,18 @@ class Trail extends React.Component {
                             <span>
                                 <Rate tooltips={desc} onChange={this.handleChange} value={value} />
                                 {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
-                            </span>
+                            </span>,
+                            <Tooltip title='remove from your hikes'>
+                            <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
+                            </Tooltip>
                          ])
                     } else {
                         return [<Tooltip title='already hiked?'>
-            <CheckCircleFilled onClick={() => this.props.handlePatchHike
-                
-                
-                
-                
-                (thisHike, {completed: true})} />
-          </Tooltip>]
+                                    <CheckCircleFilled onClick={() => this.props.handlePatchHike(thisHike, {completed: true})} />
+                                </Tooltip>,
+                                <Tooltip title='remove from your hikes'>
+                                 <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
+                                </Tooltip>]
             }
         }else {
             return [

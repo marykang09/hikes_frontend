@@ -6,6 +6,7 @@ import About from './containers/About'
 import TrailsShowPage from './containers/TrailsShowPage'
 import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/loginForm'
+import SignUpForm from './components/signUpForm'
 import './App.css';
 
 
@@ -48,7 +49,6 @@ class App extends React.Component{
   }
 
   handlePatchHike = (hike, obj) => {
-  
     fetch(`http://localhost:3000/hikes/${hike.id}`, {
         method: 'PATCH',
         headers: {'Content-Type' : 'application/json' },
@@ -62,8 +62,12 @@ class App extends React.Component{
       })
 
   }
-
+  // if we only passed in a obj to handleNewHike which includes the trail_id and completed or favorite
+  // add user_id to that object at the top of this function, before passing it to the backend 
   handleNewHike = (trail, completed) => {
+    // handleNewHike = (trail, completed) => {
+    // obj[user_id] = this.state.currenUser.id
+
     if (this.state.currentUser){
       let obj = { 
         user_id: this.state.currentUser.id,
@@ -87,6 +91,16 @@ class App extends React.Component{
     }
   }
 
+  handleRemoveHike = (hike) => {
+    fetch(`http://localhost:3000/hikes/${hike.id}`, {
+        method: 'DELETE' })
+
+    let updatedMyHikes = this.state.myHikes.filter(h => h.id !== hike.id)
+    this.setState({
+      myHikes: updatedMyHikes
+    })
+
+  }
 
   render(){
     return (
@@ -95,18 +109,20 @@ class App extends React.Component{
         <Route 
           exact path="/" 
           render={() => {
-              return (< TrailsPage handlePatchHike={this.handlePatchHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trails={this.state.trails}/>)}} />
+              return (< TrailsPage handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trails={this.state.trails}/>)}} />
         <Route exact path="/about" component={About}/>
         <Route exact path="/trails/:id" render={ (routerProps) => {
             let id = routerProps.match.params.id
             let trailShow = this.state.trails.find(t => t.id == id)
-            return (< TrailsShowPage handlePatchHike={this.handlePatchHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trail={trailShow} />)
+            return (< TrailsShowPage handlePatchHike={this.handlePatchHike} handleRemoveHike={this.handleRemoveHike} handleNewHike={this.handleNewHike} myHikes={this.state.myHikes} trail={trailShow} />)
         }}
         />
+        <Route exact path='/signup' component={SignUpForm} />
         <Route 
           exact path="/myhikes" 
           render={() => this.state.currentUser === null ? 
                                           <Redirect to="/login" /> : < MyHikesPage 
+                                                                         handleRemoveHike={this.handleRemoveHike}
                                                                           myHikes={this.state.myHikes}
                                                                           handlePatchHike={this.handlePatchHike} /> } />
        

@@ -1,5 +1,7 @@
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {Link} from "react-router-dom";
+
 import React from 'react'
 
 class loginForm extends React.Component {
@@ -47,6 +49,7 @@ class loginForm extends React.Component {
 
     render(){
         return (
+        <Col span={8} style={{margin: 'auto'}}>
         <Form
         name="normal_login"
         className="login-form"
@@ -90,13 +93,7 @@ class loginForm extends React.Component {
             value={this.state.password}
             />
         </Form.Item>
-        
-        <Form.Item>
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
-        </Form.Item>
+    
 
         <Form.Item>
             <Button 
@@ -106,9 +103,10 @@ class loginForm extends React.Component {
                 onClick={this.handleLoginSubmit}>
             Log In
             </Button>
-            Or <a href="">Register Now!</a>
+            Or <Link to="/signup" >Register Now!</Link>
         </Form.Item>
         </Form>
+        </Col>
     )
     
     }

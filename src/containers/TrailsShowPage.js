@@ -7,7 +7,7 @@ class TrailsShowPage extends React.Component{
     render () {
 
         return this.props.trail? (
-            <TrailDetails handleNewHike={this.props.handleNewHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={this.props.trail}/>
+            <TrailDetails handleRemoveHike={this.props.handleRemoveHike} handleNewHike={this.props.handleNewHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={this.props.trail}/>
         ): null
  
     }
