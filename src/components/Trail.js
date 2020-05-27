@@ -42,36 +42,69 @@ class Trail extends React.Component {
     getActions = () => {
                 const { value } = this.state;
                 const thisHike = this.props.myHikes.find(hike => hike.trail.name === this.props.trail.name)
-                if (thisHike){
-                    if (thisHike.completed){
-                        return ([
-                            <span>
-                                <Rate tooltips={desc} onChange={this.handleChange} value={value} />
-                                {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
-                            </span>,
-                            <Tooltip title='remove from your hikes'>
-                            <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
-                            </Tooltip>
-                         ])
-                    } else {
-                        return [<Tooltip title='already hiked?'>
-                                    <CheckCircleFilled onClick={() => this.props.handlePatchHike(thisHike, {completed: true})} />
-                                </Tooltip>,
-                                <Tooltip title='remove from your hikes'>
-                                 <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
-                                </Tooltip>]
-            }
-        }else {
+            
+            if (thisHike){
+                    let array = [<Tooltip title='remove from your hikes'> <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/> </Tooltip>]
+                    //remove hike button is part of initial array if thisHike exists
+                    
+                    //if hike is completed, show the rating, else show the -completed- button
+                    thisHike.completed? array.unshift(<span>
+                                                    <Rate tooltips={desc} onChange={this.handleChange} value={value} />
+                                                     {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                                                    </span>):
+                                                    array.unshift(  <Tooltip title='already hiked?'>
+                                                                       <CheckCircleFilled onClick={() => this.props.handlePatchHike(thisHike, {completed: true})} />
+                                                                 </Tooltip>)
+                    //if hike is already favorited, show -unfavorite- button, else, show the favorite button
+                    thisHike.favorite? array.unshift( <Tooltip title='unfavorite this hike'>
+                                                     <HeartTwoTone twoToneColor="#eb2f96" onClick={() => this.props.handlePatchHike(thisHike, {favorite: false})}/>
+                                                 </Tooltip>): 
+                                                array.unshift(<Tooltip title='favorite this hike'>
+                                                    <HeartOutlined onClick={() => this.props.handlePatchHike(thisHike, {favorite: true})} />
+                                                 </Tooltip>)
+                    return(array)  
+
+            }  
+                    // if (thisHike.completed){
+                    //     return ([
+                    //         <span>
+                    //             <Rate tooltips={desc} onChange={this.handleChange} value={value} />
+                    //             {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
+                    //         </span>,
+                    //         <Tooltip title='remove from your hikes'>
+                    //         <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
+                    //         </Tooltip>
+                    //      ])
+                    // }
+                    // else if(thisHike.favorite){
+                    //     return([
+                    //         <Tooltip title='unfavorite this hike'>
+                    //             <HeartTwoTone twoToneColor="#eb2f96" onClick={() => this.props.handlePatchHike(thisHike, {favorite: false})}/>
+                    //         </Tooltip>
+                    //     ])
+                    // }
+                    // else {
+                    //     return [
+                    //     <Tooltip title='already hiked?'>
+                    //          <CheckCircleFilled onClick={() => this.props.handlePatchHike(thisHike, {completed: true})} />
+                    //      </Tooltip>,
+                    //      <Tooltip title='remove from your hikes'>
+                    //         <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
+                    //     </Tooltip>]
+        //     }
+        else{
             return [
-                <Tooltip title='want to hike'>
-                    <PlusCircleFilled onClick={()=> this.props.handleNewHike(this.props.trail, false)} />
+                <Tooltip title='favorite this hike'>
+                    <HeartOutlined onClick={()=> this.props.handleNewHike({trail_id: this.props.trail.id, favorite: true})} />
                   </Tooltip>,
+                 <Tooltip title='want to hike'>
+                 <PlusCircleFilled onClick={()=> this.props.handleNewHike({trail_id: this.props.trail.id})} />
+               </Tooltip>,
                 <Tooltip title='already hiked?'>
-                  <CheckCircleFilled onClick={()=> this.props.handleNewHike(this.props.trail, true)}/>
+                  <CheckCircleFilled onClick={()=> this.props.handleNewHike({trail_id: this.props.trail.id, completed: true})}/>
                 </Tooltip>
                 ]
-            }
-            
+            } 
         }
 
     render () {
@@ -103,7 +136,7 @@ class Trail extends React.Component {
                  </Card>
          </Col>
     )
-    }
+     }
 }
 
 export default Trail 

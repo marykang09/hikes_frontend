@@ -1,6 +1,6 @@
 import React from 'react'
 import {PlusCircleFilled, CheckCircleFilled, CloseCircleOutlined} from '@ant-design/icons'
-import GoogleMaps from './googleMaps'
+import GoogleMaps from './GoogleMaps'
 
 const TrailDetails = (props) => {
     const {name, img_medium, location, difficulty, length, ascent, descent, summary, latitude, longitude} = props.trail
@@ -12,15 +12,15 @@ const TrailDetails = (props) => {
                 return (<div><button onClick={() => props.handleRemoveHike(thisHike)}>Remove from your hikes{<CloseCircleOutlined />}</button></div>)
             } else {
                 return(<div>
-                        <button>Already hiked? {<CheckCircleFilled onClick={() => props.handlePatchHike(thisHike,{completed: true})} />}</button>
+                        <button onClick={() => props.handlePatchHike(thisHike,{completed: true})}>Already hiked? {<CheckCircleFilled  />}</button>
                         <button onClick={() => props.handleRemoveHike(thisHike)}>Remove from your hikes{<CloseCircleOutlined />}</button>
                     </div>)
             }
         } else {
         return (
             <div>
-                <button onClick={() => props.handleNewHike(props.trail, false)}>Want to hike {<PlusCircleFilled />}</button>
-                <button onClick={() => props.handleNewHike(props.trail, true)}>Already hiked? {<CheckCircleFilled />}</button>
+                <button onClick={() => props.handleNewHike({trail_id: props.trail.id})}>Want to hike {<PlusCircleFilled />}</button>
+                <button onClick={() => props.handleNewHike({trail_id: props.trail.id, completed: true})}>Already hiked? {<CheckCircleFilled />}</button>
             </div>
             )
         } 

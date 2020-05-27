@@ -5,8 +5,8 @@ import NavBar from './components/NavBar'
 import About from './containers/About'
 import TrailsShowPage from './containers/TrailsShowPage'
 import MyHikesPage from './containers/MyHikesPage'
-import LoginForm from './components/loginForm'
-import SignUpForm from './components/signUpForm'
+import LoginForm from './components/LoginForm'
+import SignUpForm from './components/SignUpForm'
 import './App.css';
 
 
@@ -49,6 +49,7 @@ class App extends React.Component{
   }
 
   handlePatchHike = (hike, obj) => {
+    console.log(hike, obj)
     fetch(`http://localhost:3000/hikes/${hike.id}`, {
         method: 'PATCH',
         headers: {'Content-Type' : 'application/json' },
@@ -64,16 +65,9 @@ class App extends React.Component{
   }
   // if we only passed in a obj to handleNewHike which includes the trail_id and completed or favorite
   // add user_id to that object at the top of this function, before passing it to the backend 
-  handleNewHike = (trail, completed) => {
-    // handleNewHike = (trail, completed) => {
-    // obj[user_id] = this.state.currenUser.id
-
+  handleNewHike = (obj) => {
     if (this.state.currentUser){
-      let obj = { 
-        user_id: this.state.currentUser.id,
-        trail_id: trail.id,
-        completed: completed
-      }
+      obj.user_id = this.state.currentUser.id
       fetch("http://localhost:3000/hikes", {
         method: 'POST',
         headers: {'Content-Type' : 'application/json' },
