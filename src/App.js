@@ -49,7 +49,6 @@ class App extends React.Component{
   }
 
   handlePatchHike = (hike, obj) => {
-    console.log(hike, obj)
     fetch(`http://localhost:3000/hikes/${hike.id}`, {
         method: 'PATCH',
         headers: {'Content-Type' : 'application/json' },
@@ -97,6 +96,8 @@ class App extends React.Component{
   }
 
   render(){
+    // sort my hikes here by favorite status  a.sort(function(a,b){return a.xx-b.xx});
+    const myHikesArray = this.state.myHikes.sort(function(a, b){return b.favorite-a.favorite})
     return (
       <div className="App">
         <NavBar currentUser={this.state.currentUser}  />
@@ -117,7 +118,7 @@ class App extends React.Component{
           render={() => this.state.currentUser === null ? 
                                           <Redirect to="/login" /> : < MyHikesPage 
                                                                          handleRemoveHike={this.handleRemoveHike}
-                                                                          myHikes={this.state.myHikes}
+                                                                          myHikes={myHikesArray}
                                                                           handlePatchHike={this.handlePatchHike} /> } />
        
         <Route exact path="/login" render={ () => 

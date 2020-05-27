@@ -65,33 +65,6 @@ class Trail extends React.Component {
                     return(array)  
 
             }  
-                    // if (thisHike.completed){
-                    //     return ([
-                    //         <span>
-                    //             <Rate tooltips={desc} onChange={this.handleChange} value={value} />
-                    //             {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
-                    //         </span>,
-                    //         <Tooltip title='remove from your hikes'>
-                    //         <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
-                    //         </Tooltip>
-                    //      ])
-                    // }
-                    // else if(thisHike.favorite){
-                    //     return([
-                    //         <Tooltip title='unfavorite this hike'>
-                    //             <HeartTwoTone twoToneColor="#eb2f96" onClick={() => this.props.handlePatchHike(thisHike, {favorite: false})}/>
-                    //         </Tooltip>
-                    //     ])
-                    // }
-                    // else {
-                    //     return [
-                    //     <Tooltip title='already hiked?'>
-                    //          <CheckCircleFilled onClick={() => this.props.handlePatchHike(thisHike, {completed: true})} />
-                    //      </Tooltip>,
-                    //      <Tooltip title='remove from your hikes'>
-                    //         <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/>
-                    //     </Tooltip>]
-        //     }
         else{
             return [
                 <Tooltip title='favorite this hike'>
