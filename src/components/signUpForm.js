@@ -16,9 +16,9 @@ class SignUpForm extends React.Component {
       }
     }
 
-    validateUsername = () => {
-        console.log('run fetch call to check username')
-    }
+    // validateUsername = (value) => {
+    //     console.log('run fetch call to check username')
+    // }
 
     onFirstNameChange = (event) => {
       this.setState({firstname: event.target.value})
@@ -102,8 +102,16 @@ render(){
         rules={[
           {
             required: true,
-            message: 'Please input your password!',
-          },
+            message: 'Please input your password!'
+          }
+          // },
+          // ({ getFieldValue }) => ({
+          //   validator(rule, value) {
+          //     if ( validateUsername(value)) {
+          //       return Promise.resolve();
+          //     }
+          //     return Promise.reject('The two passwords that you entered do not match!');
+          //   }})
         ]}
         hasFeedback
       >

@@ -2,6 +2,8 @@ import React from 'react'
 import {Link} from "react-router-dom";
 import { Menu, Modal } from 'antd';
 import { CompassOutlined, BulbOutlined, UserOutlined } from '@ant-design/icons';
+import logo from '../assets/getTrails.png'
+
 const { SubMenu } = Menu;
 
 class NavBar extends React.Component{
@@ -41,6 +43,12 @@ class NavBar extends React.Component{
       return(
           <div>
               <Menu mode="horizontal">
+                
+                  <Menu.Item key="trails">
+                          <Link to="/"><img alt={'logo'} height={60}src={logo} style={{float: 'left'}}/></Link>
+                   </Menu.Item>
+                  
+
 
                   <Menu.Item key="trails" icon={<CompassOutlined/>}>
                       <Link to="/">Trails</Link>

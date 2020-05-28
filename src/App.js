@@ -7,6 +7,7 @@ import TrailsShowPage from './containers/TrailsShowPage'
 import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
+import FourOhFour from './containers/FourOhFour'
 import './App.css';
 
 
@@ -49,7 +50,8 @@ class App extends React.Component{
   handleLogout = () => {
     localStorage.clear()
     this.setState({
-      currentUser: null 
+      currentUser: null ,
+      myHikes: []
     })
   }
 
@@ -151,9 +153,13 @@ class App extends React.Component{
     
     return (
       <div className="App">
+        <div className="sticky">
         <NavBar 
           currentUser={this.state.currentUser} 
           handleLogout={this.handleLogout} />
+        </div>
+        <div className="main">
+        <Switch>
         <Route 
           exact path="/" 
           render={() => {
@@ -198,7 +204,9 @@ class App extends React.Component{
           render={ () => 
               this.state.currentUser === null? < LoginForm 
                                                   changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
-          
+         <Route render={FourOhFour}/>
+        </Switch>
+        </div>
       </div>
     )
     }

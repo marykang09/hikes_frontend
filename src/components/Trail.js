@@ -2,7 +2,8 @@ import React from 'react'
 import { Tooltip, Card, Avatar, Col, Rate } from 'antd';
 import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone, CloseCircleOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
-// import all_clear from 'hikes_frontend/assets/all_clear.png' 
+import clear from '../assets/clear.png'
+
 
 const { Meta } = Card;
 
@@ -32,10 +33,6 @@ class Trail extends React.Component {
     }
   }
 
-    // const getIcon = () =>{
-        //     if (condition_status === "All Clear"){
-        //         return 'hikes_frontend/assets/all_clear.png'} 
-        // }   
         // we have to know if this is trail on the user's hike list and the data for that "hike"
             
     getActions = () => {
@@ -80,17 +77,17 @@ class Trail extends React.Component {
         }
 
     render () {
-        const {name, location, img_medium, id} = this.props.trail
+        const {name, location, img_medium, id, condition_status} = this.props.trail
         return(  
             <Col span={8}>
                 <Card  
                     hoverable
-                    style={{ width: 'auto' }}
+                    style={{ width: 400 }}
                     cover={
                         // Link to works when you click on the image, not when you click on the name of the hike. 
                         <Link to={`trails/${id}`}>
                             <img
-                                alt="example"
+                                alt="trail image"
                                 height={200}
                                 width={400}
                                 src={img_medium}
@@ -99,14 +96,14 @@ class Trail extends React.Component {
                     }
                     actions={this.getActions()}
                     >
-                        <Meta
-                        // avatar={<img height={10} width={10} src={getIcon()}/>}
+                        <Link to={`trails/${id}`}><Meta
+                        avatar= {condition_status === 'All Clear'? <Tooltip title={`Condition: all clear!}`}><img height={30} width={50} style={{position: "absolute",top: 0, left:-1 }}src={clear}/></Tooltip>  : null }
                         title={name}
                         description={location}
-                        
-                        />
+                        style={{align: 'center'}}
+                        /> </Link>
                  </Card>
-         </Col>
+            </Col>
     )
      }
 }
