@@ -8,6 +8,7 @@ import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 import FourOhFour from './containers/FourOhFour'
+import { Spin } from 'antd';
 import './App.css';
 
 
@@ -43,7 +44,6 @@ class App extends React.Component{
           .then(userData => {
             this.changeCurrentUser(userData)
           }) //update currentuser with signed in user
-
       }
   }
 
@@ -51,7 +51,7 @@ class App extends React.Component{
     localStorage.clear()
     this.setState({
       currentUser: null ,
-      myHikes: []
+      myHikes: [],
     })
   }
 
@@ -115,7 +115,7 @@ class App extends React.Component{
 
     let updatedMyHikes = this.state.myHikes.filter(h => h.id !== hike.id)
     this.setState({
-      myHikes: updatedMyHikes
+         myHikes: updatedMyHikes
     })
   }
 
@@ -192,7 +192,7 @@ class App extends React.Component{
         <Route 
           exact path="/myhikes" 
           render={() => this.state.currentUser === null ? 
-                                          <Redirect to="/login" /> : < MyHikesPage 
+                                          <Redirect to="/login" /> :  < MyHikesPage 
                                                                           searchTerm={this.state.searchTerm} 
                                                                           handleSearchTerm={this.handleSearchTerm}
                                                                           handleRemoveHike={this.handleRemoveHike}
@@ -207,9 +207,9 @@ class App extends React.Component{
          <Route render={FourOhFour}/>
         </Switch>
         </div>
-      </div>
-    )
-    }
+    </div>
+      )
+   }
 }
 
 export default App;

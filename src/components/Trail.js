@@ -40,8 +40,8 @@ class Trail extends React.Component {
                 const thisHike = this.props.myHikes.find(hike => hike.trail.name === this.props.trail.name)
             
             if (thisHike){
+                //remove hike button is part of initial array if thisHike exists
                     let array = [<Tooltip title='remove from your hikes'> <CloseCircleOutlined onClick={() => this.props.handleRemoveHike(thisHike)}/> </Tooltip>]
-                    //remove hike button is part of initial array if thisHike exists
                     
                     //if hike is completed, show the rating, else show the -completed- button
                     thisHike.completed? array.unshift(<span>
@@ -97,7 +97,7 @@ class Trail extends React.Component {
                     actions={this.getActions()}
                     >
                         <Link to={`trails/${id}`}><Meta
-                        avatar= {condition_status === 'All Clear'? <Tooltip title={`Condition: all clear!}`}><img height={30} width={50} style={{position: "absolute",top: 0, left:-1 }}src={clear}/></Tooltip>  : null }
+                        avatar= {condition_status === 'All Clear'? <Tooltip title={`Condition: all clear!`}><img height={30} width={50} style={{position: "absolute",top: 0, left:-1 }}src={clear}/></Tooltip>  : null }
                         title={name}
                         description={location}
                         style={{align: 'center'}}
