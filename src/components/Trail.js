@@ -20,7 +20,6 @@ class Trail extends React.Component {
 
   handleChange = value => {
         const thisHike = this.props.myHikes.find(hike => hike.trail.name === this.props.trail.name)
-    //   this.setState({value})
       this.props.handlePatchHike(thisHike, {rating: value})
   };
 
@@ -45,7 +44,7 @@ class Trail extends React.Component {
                     
                     //if hike is completed, show the rating, else show the -completed- button
                     thisHike.completed? array.unshift(<span>
-                                                    <Rate tooltips={desc} onChange={this.handleChange} value={thisHike.rating} />
+                                                    <Rate imageSize={30} tooltips={desc} onChange={this.handleChange} value={thisHike.rating} />
                                                      {value ? <span className="ant-rate-text">{desc[value - 1]}</span> : ''}
                                                     </span>):
                                                     array.unshift(  <Tooltip title='already hiked?'>
@@ -79,7 +78,7 @@ class Trail extends React.Component {
     render () {
         const {name, location, img_medium, id, condition_status} = this.props.trail
         return(  
-            <Col span={8}>
+            <Col  flex="auto">
                 <Card  
                     hoverable
                     style={{ width: 400 }}

@@ -85,7 +85,6 @@ class App extends React.Component{
                                                         return hike} return h})
         this.setState({myHikes: updatedArray})                                          
       })
-
   }
   // if we only passed in a obj to handleNewHike which includes the trail_id and completed or favorite
   // add user_id to that object at the top of this function, before passing it to the backend 

@@ -16,9 +16,11 @@ class SignUpForm extends React.Component {
       }
     }
 
-    // validateUsername = (value) => {
-    //     console.log('run fetch call to check username')
-    // }
+    validateUsername = () => {
+       fetch('http://localhost:3000/users')
+       .then(response=> response.json())
+       .then(usersArray => console.log(!!usersArray.find(user => user.username === this.state.username)))
+    }
 
     onFirstNameChange = (event) => {
       this.setState({firstname: event.target.value})
@@ -87,8 +89,16 @@ render(){
         onChange={this.onUsernameChange}
         rules={[{
             required: true,
-            message: 'Please input a username',
-        }]}
+            message: 'Please input a username'}
+            ,
+            ({ getFieldValue }) => ({
+              validator(rule, value) {
+                if (this.validateUsername) {
+                  return Promise.resolve();
+                }
+                return Promise.reject('This username is already taken!');
+              }})
+        ]}
         hasFeedback
       >
         <Input />
@@ -104,14 +114,6 @@ render(){
             required: true,
             message: 'Please input your password!'
           }
-          // },
-          // ({ getFieldValue }) => ({
-          //   validator(rule, value) {
-          //     if ( validateUsername(value)) {
-          //       return Promise.resolve();
-          //     }
-          //     return Promise.reject('The two passwords that you entered do not match!');
-          //   }})
         ]}
         hasFeedback
       >
@@ -143,7 +145,7 @@ render(){
 
       
       <Form.Item >
-        <Button type="primary" htmlType="submit" onClick={this.handleClearAndSubmit}>
+        <Button type="primary" htmlType="submit" onFinish={this.handleClearAndSubmit}>
           Sign Up
         </Button>
       </Form.Item>

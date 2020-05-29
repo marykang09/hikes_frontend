@@ -6,7 +6,7 @@ const TrailsContainer = (props) => {
 
     return (
         <div> 
-            <Row>
+             <Row>
                  {props.trails.map(t => < Trail 
                                             handleRemoveHike={props.handleRemoveHike}
                                             handlePatchHike={props.handlePatchHike}

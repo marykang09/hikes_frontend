@@ -7,21 +7,20 @@ const { Meta } = Card;
 const About = () => {
     return(
         <div>
-            <h1>About getTrails</h1>
-            <Row>
-            <Col span={12} >
+            <Row justify="space-around">
+            <Col flex="auto" justify="center">
                     <Card
                         hoverable
-                        style={{ width: 400, height: 600,  float: "right"}}
+                        style={{ width: 400, height: 600}}
                         cover={<img height={500} alt="Mary Kang Photo" src={mary} />}
                     >
                         <Meta title="Mary Kang" description="Mary is a super outdoorsy chick who loves yoga and picking up frogs." />
                     </Card>
             </Col>
-            <Col span={12} >                   
+            <Col flex="auto" justify="center">                   
                     <Card
                         hoverable
-                        style={{ width: 400, height: 600,  float: "left"}}
+                        style={{ width: 400, height: 600}}
                         cover={<img height={500} alt="Lindsay Montgomery Photo" src={lindsay} />}
                     >
                         <Meta title=" Lindsay Montgomery" description="Lindsay is not as outdoorsy as Mary but likes to walk her dog in the woods." />
