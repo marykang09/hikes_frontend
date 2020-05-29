@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Form, Input, Tooltip,Cascader,Select, Row, Col, Checkbox, Button,AutoComplete,} from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-
+import React from 'react'
+import { Form, Input, Col, Button} from 'antd';
 
 
 class SignUpForm extends React.Component {

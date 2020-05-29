@@ -12,9 +12,8 @@
   z-index: 100;
 }
 .main {
-  padding-left: 5%;
-  padding-right: 5%;
-  margin-top: 6%
+  padding: 5%;
+  margin-top: 5%
 }
 
 .App-logo {

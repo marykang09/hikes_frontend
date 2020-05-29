@@ -1,10 +1,9 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import { Menu, Modal } from 'antd';
+import { Menu} from 'antd';
 import { CompassOutlined, BulbOutlined, UserOutlined } from '@ant-design/icons';
 import logo from '../assets/getTrails.png'
 
-const { SubMenu } = Menu;
 
 class NavBar extends React.Component{
     constructor(){
@@ -93,49 +92,3 @@ class NavBar extends React.Component{
 export default NavBar
 
 
-{/* <div className={`ui inverted ${props.color} menu navbar`}>
-<Link to="/" className="item">
-  <h2 className="ui header">
-    <i className={`${props.icon} icon`}></i>
-    <div className="content">{props.title}</div>
-    <div className="sub header">{props.subtitle}</div>
-  </h2>
-</Link>
-<div className="item">
- <Link to="/">About Page</Link>
-</div>
-<div className="item">
- <Link to="/paintings">Gallery Page</Link>
-</div>
-</div> */}
-
-
-// import { Modal, Button } from 'antd';
-
-// class App extends React.Component {
-
-//   handleOk = e => {
-//     console.log(e);
-//     this.setState({
-//       visible: false,
-//     });
-//   };
-
-//   handleCancel = e => {
-//     console.log(e);
-//     this.setState({
-//       visible: false,
-//     });
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <Button type="primary" onClick={this.showModal}>
-//           Open Modal
-//         </Button>
-//      
-//       </div>
-//     );
-//   }
-// }

@@ -12,7 +12,7 @@ const About = () => {
                     <Card
                         hoverable
                         style={{ width: 400, height: 600}}
-                        cover={<img height={500} alt="Mary Kang Photo" src={mary} />}
+                        cover={<img height={500} alt="Mary Kang" src={mary} />}
                     >
                         <Meta title="Mary Kang" description="Mary is a super outdoorsy chick who loves yoga and picking up frogs." />
                     </Card>
@@ -21,7 +21,7 @@ const About = () => {
                     <Card
                         hoverable
                         style={{ width: 400, height: 600}}
-                        cover={<img height={500} alt="Lindsay Montgomery Photo" src={lindsay} />}
+                        cover={<img height={500} alt="Lindsay Montgomery" src={lindsay} />}
                     >
                         <Meta title=" Lindsay Montgomery" description="Lindsay is not as outdoorsy as Mary but likes to walk her dog in the woods." />
                     </Card>

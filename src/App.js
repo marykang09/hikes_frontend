@@ -1,6 +1,6 @@
 import React from 'react';
 import TrailsPage from './containers/TrailsPage'
-import {Switch, Route, Link, Redirect} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import NavBar from './components/NavBar'
 import About from './containers/About'
 import TrailsShowPage from './containers/TrailsShowPage'
@@ -8,7 +8,7 @@ import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUpForm'
 import FourOhFour from './containers/FourOhFour'
-import { Spin } from 'antd';
+// import { Spin } from 'antd';
 import './App.css';
 
 
@@ -177,7 +177,7 @@ class App extends React.Component{
           exact path="/trails/:id" 
           render={ (routerProps) => {
                     let id = routerProps.match.params.id
-                    let trailShow = this.state.trails.find(t => t.id == id)
+                    let trailShow = this.state.trails.find(t => t.id === parseInt(id)) 
                     return (< TrailsShowPage 
                                 handlePatchHike={this.handlePatchHike} 
                                 handleRemoveHike={this.handleRemoveHike} 

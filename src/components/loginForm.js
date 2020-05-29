@@ -1,4 +1,4 @@
-import { Form, Input, Button, Checkbox, Col } from 'antd';
+import { Form, Input, Button, Col } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 

@@ -19,7 +19,11 @@ class MyHikesPage extends React.Component{
                      {completedHikes.length > 0 ?
                     <div>
                     <h2> My Completed Hikes </h2>  
-                     <Row> {completedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> ) }</Row>
+                     <Row> {completedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} 
+                                                            hike={this.props.myHikes.find(hike => hike.id === h.id)}
+                                                            handlePatchHike={this.props.handlePatchHike} 
+                                                            trail={h.trail} 
+                                                            key={`hike${h.trail.id}`} /> ) }</Row>
                      </div>
                      : <NoCompletedHikes/>}
                  
@@ -30,7 +34,13 @@ class MyHikesPage extends React.Component{
                      {incompletedHikes.length > 0 ? 
                      <div>
                     <h2> I want to hike... </h2> 
-                     <Row> { incompletedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} handlePatchHike={this.props.handlePatchHike} myHikes={this.props.myHikes} trail={h.trail} key={h.trail.id} /> )} </Row> 
+                     <Row> { incompletedHikes.map(h => < Trail 
+                                                        hike={this.props.myHikes.find(hike=> hike.id === h.id)}
+                                                        handleRemoveHike={this.props.handleRemoveHike} 
+                                                        handlePatchHike={this.props.handlePatchHike} 
+                                                        myHikes={this.props.myHikes} 
+                                                        trail={h.trail}
+                                                        key={h.trail.id} /> )} </Row> 
                      </div>
                      : <NoSavedHikes/>}
                 </div>

@@ -7,7 +7,9 @@ const TrailsContainer = (props) => {
     return (
         <div> 
              <Row>
+                 
                  {props.trails.map(t => < Trail 
+                                            hike={props.myHikes.find(h=> h.trail.id === t.id)}
                                             handleRemoveHike={props.handleRemoveHike}
                                             handlePatchHike={props.handlePatchHike}
                                             handleNewHike={props.handleNewHike} 
