@@ -10,14 +10,28 @@ class SignUpForm extends React.Component {
         firstname: '',
         lastname: '', 
         username: '',
-        password: ''
+        password: '',
+        errors: {
+          lastname: [],
+          firstname: [],
+          password: [],
+          username: []
+        }
       }
     }
 
     validateUsername = () => {
        fetch('http://localhost:3000/users')
        .then(response=> response.json())
-       .then(usersArray => console.log(!!usersArray.find(user => user.username === this.state.username)))
+       .then(usersArray => {
+         console.log(usersArray)
+         if  (this.state.username.length > 6 && !!!usersArray.find(user => user.username === this.state.username)){
+           console.log('true')
+           return 'success'
+         }
+         console.log('false')
+         return 'error'
+        })
     }
 
     onFirstNameChange = (event) => {
@@ -42,7 +56,13 @@ class SignUpForm extends React.Component {
         firstname: '',
         lastname: '', 
         username: '',
-        password: ''
+        password: '',
+        errors: {
+          lastname: [],
+          firstname: [],
+          password: [],
+          username: []
+        }
       })
     }
 
@@ -85,17 +105,20 @@ render(){
         label="username"
         value={this.state.username}
         onChange={this.onUsernameChange}
+        validateStatus='success'
+        // validateStatus={this.validateUsername()}
+        help="Username must be unique"
         rules={[{
             required: true,
             message: 'Please input a username'}
-            ,
-            ({ getFieldValue }) => ({
-              validator(rule, value) {
-                if (this.validateUsername) {
-                  return Promise.resolve();
-                }
-                return Promise.reject('This username is already taken!');
-              }})
+            
+        //     () => ({
+        //       validator(rule, value) {
+        //         if (this.validateUsername) {
+        //           return Promise.resolve();
+        //         }
+        //         return Promise.reject('This username is already taken!');
+              // }})
         ]}
         hasFeedback
       >
