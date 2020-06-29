@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tooltip, Card, Col, Rate } from 'antd';
+import { Tooltip, Card, Col, Rate, Row } from 'antd';
 import { PlusCircleFilled, CheckCircleFilled, HeartOutlined, HeartTwoTone, CloseCircleOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import clear from '../assets/clear.png'
@@ -31,7 +31,8 @@ class Trail extends React.Component {
   }
 
         // we have to know if this is trail on the user's hike list and the data for that "hike"
-            
+      
+     // returns an array of buttons as part as the card  
     getActions = () => {
         const { value } = this.state;
             
@@ -80,7 +81,6 @@ class Trail extends React.Component {
                     hoverable
                     style={{ width: 400 }}
                     cover={
-                        // Link to works when you click on the image, not when you click on the name of the hike. 
                         <Link to={`trails/${id}`}>
                             <img
                                 alt='trail'

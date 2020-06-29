@@ -11,26 +11,23 @@ class SignUpForm extends React.Component {
         lastname: '', 
         username: '',
         password: '',
-        errors: {
-          lastname: [],
-          firstname: [],
-          password: [],
-          username: []
+        usernameValid: '',
+        usernameError: ''
         }
       }
-    }
 
-    validateUsername = () => {
+    validateUsername = (username) => {
        fetch('http://localhost:3000/users')
        .then(response=> response.json())
        .then(usersArray => {
-         console.log(usersArray)
-         if  (this.state.username.length > 6 && !!!usersArray.find(user => user.username === this.state.username)){
-           console.log('true')
-           return 'success'
+         if  (!usersArray.find(user => user.username === username)){
+            this.setState({usernameValid: 'success', usernameError: ''})
+          
          }
-         console.log('false')
-         return 'error'
+         else {
+           this.setState({usernameValid: 'error', usernameError: 'username is already taken'})
+           return false 
+         }
         })
     }
 
@@ -44,6 +41,7 @@ class SignUpForm extends React.Component {
 
     onUsernameChange = (event) => {
       this.setState({username: event.target.value})
+      this.validateUsername(event.target.value)
     }
     onPasswordChange = (event) => {
       this.setState({password: event.target.value})
@@ -57,12 +55,8 @@ class SignUpForm extends React.Component {
         lastname: '', 
         username: '',
         password: '',
-        errors: {
-          lastname: [],
-          firstname: [],
-          password: [],
-          username: []
-        }
+        usernameValid: '',
+        usernameError: ''
       })
     }
 
@@ -105,24 +99,17 @@ render(){
         label="username"
         value={this.state.username}
         onChange={this.onUsernameChange}
-        validateStatus='success'
-        // validateStatus={this.validateUsername()}
-        help="Username must be unique"
-        rules={[{
-            required: true,
-            message: 'Please input a username'}
-            
-        //     () => ({
-        //       validator(rule, value) {
-        //         if (this.validateUsername) {
-        //           return Promise.resolve();
-        //         }
-        //         return Promise.reject('This username is already taken!');
-              // }})
-        ]}
+        validateStatus={this.state.usernameValid}
+        rules={[
+          {
+          required: true,
+          message: 'Please input a username',
+       }
+      ]}
         hasFeedback
       >
         <Input />
+        <label style={{color:'red'}} >{this.state.usernameError}</label>
       </Form.Item>
 
       <Form.Item
@@ -166,7 +153,7 @@ render(){
 
       
       <Form.Item >
-        <Button type="primary" htmlType="submit" onFinish={this.handleClearAndSubmit}>
+        <Button type="primary" htmlType="submit" onSubmit={this.handleClearAndSubmit}>
           Sign Up
         </Button>
       </Form.Item>
