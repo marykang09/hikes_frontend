@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tooltip, Card, Col, Rate } from 'antd';
+import { Tooltip, Card, Col, Rate} from 'antd';
 import {PlusCircleFilled, CheckCircleFilled, CloseCircleOutlined, HeartOutlined, HeartTwoTone} from '@ant-design/icons'
 import GoogleMaps from './GoogleMaps'
 

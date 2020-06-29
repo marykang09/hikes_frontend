@@ -7,8 +7,7 @@ const { Meta } = Card;
 const About = () => {
     return(
         <div>
-            <Row justify="space-around">
-            <Col flex="auto" justify="center">
+            <Row className='aboutRow'>
                     <Card
                         hoverable
                         style={{ width: 400, height: 600}}
@@ -16,8 +15,7 @@ const About = () => {
                     >
                         <Meta title="Mary Kang" description="Mary is a super outdoorsy chick who loves yoga and picking up frogs." />
                     </Card>
-            </Col>
-            <Col flex="auto" justify="center">                   
+                        
                     <Card
                         hoverable
                         style={{ width: 400, height: 600}}
@@ -25,11 +23,10 @@ const About = () => {
                     >
                         <Meta title=" Lindsay Montgomery" description="Lindsay is not as outdoorsy as Mary but likes to walk her dog in the woods." />
                     </Card>
-            </Col>
             </Row>
             <br/>
             <p>Mary and Lindsay built getTrails to encourage all the indoorsy folks out there to explore the great outdoors during the COVID-19 Pandemic.</p>
-            <p>Lindsay and Mary are both Full Stack Software Developers studying at the Flatiron School, scheduled to graduate June 18. 
+            <p>Lindsay and Mary are both Full Stack Software Developers and built getTrails while studying at the Flatiron School. Lindsay and Mary both graduated from Flatiron's Full Stack Program in June 2020. 
             </p>
         </div>
         
