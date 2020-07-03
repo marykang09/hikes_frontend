@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { Form, Input, Col, Button} from 'antd';
+import { Form, Input, Col, Button} from 'antd'
+// import {Button} from 'react-bootstrap'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 
 class SignUp extends React.Component{
@@ -218,9 +219,8 @@ class SignUp extends React.Component{
                     </Form.Item>
                     <Form.Item>
                 <Button 
-                    type="primary" 
-                    htmlType="submit" 
-                    className="login-form-button"
+                  
+                    className="btn-light"
                     onClick={this.handleSignUpSubmit}>
                 SignUp
                 </Button>

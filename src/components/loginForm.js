@@ -1,6 +1,7 @@
-import { Form, Input, Button, Col } from 'antd';
+import { Form, Input, Col, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {Link} from "react-router-dom";
+// import {Button} from 'react-bootstrap'
 
 import React from 'react'
 
@@ -100,13 +101,11 @@ class loginForm extends React.Component {
 
         <Form.Item>
             <Button 
-                type="primary" 
-                htmlType="submit" 
-                className="login-form-button"
+                className="btn-primary"
                 onClick={this.handleLoginSubmit}>
             Log In
             </Button>
-            Or <Link to="/signup" >Register Now!</Link>
+            Or <Link to="/signup" >SignUp!</Link>
         </Form.Item>
         </Form>
         </Col>

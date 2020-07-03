@@ -17,9 +17,9 @@ class MyHikesPage extends React.Component{
                     searchTerm={this.props.searchTerm}/>
                 {this.props.searchTerm.length > 0? <div>Search results for '{this.props.searchTerm}'...</div>: null }
                 <div>
+                    <h2 > My Completed Hikes </h2>  
                      {completedHikes.length > 0 ?
                     <div>
-                    <h2 className='sideTitle'> My Completed Hikes </h2>  
                      <Row className='trailsContainerRow'> {completedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} 
                                                             hike={this.props.myHikes.find(hike => hike.id === h.id)}
                                                             handlePatchHike={this.props.handlePatchHike} 
@@ -32,9 +32,9 @@ class MyHikesPage extends React.Component{
                 <p>
                 </p>
                 <div>
+                    <h2>My Saved Hikes </h2> 
                      {incompletedHikes.length > 0 ? 
                      <div>
-                    <h2 className='sideTitle'>My Saved Hikes </h2> 
                      <Row className='trailsContainerRow'> { incompletedHikes.map(h => < Trail 
                                                         hike={this.props.myHikes.find(hike=> hike.id === h.id)}
                                                         handleRemoveHike={this.props.handleRemoveHike} 

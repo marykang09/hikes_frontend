@@ -21,14 +21,47 @@
   justify-content: space-around;
 }
 
-.sideTitle {
-  display: flex;
-  justify-content: start;
+p,div, h1, h2, h3, h4{
+  font-family: 'Cabin', sans-serif;
 }
+
 
 .myHikes{
   width: 100%;
 }
+
+h1, h2 {
+  color: #265D0C;
+}
+
+.btn-primary {
+  background-color: #F2AF58;
+  border: #F2AF58;
+}
+
+.btn-primary:hover{
+  background-color: #419A1C;
+  border: #419A1C;
+  color: black;
+}
+
+.btn-light {
+  background-color: #419A1C;
+  border: #419A1C;
+}
+
+.btn-light:hover{
+  background-color: #F2AF58;
+  border: #F2AF58;
+  color: black;
+}
+
+.link {
+ color:  #419A1C;
+} */
+
+
+
 
 .App-logo {
   height: 40vmin;
