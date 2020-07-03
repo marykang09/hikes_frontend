@@ -219,7 +219,7 @@ class SignUp extends React.Component{
                     </Form.Item>
                     <Form.Item>
                 <Button 
-                  
+                    type='submit'
                     className="btn-light"
                     onClick={this.handleSignUpSubmit}>
                 SignUp

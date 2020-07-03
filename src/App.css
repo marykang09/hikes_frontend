@@ -56,10 +56,19 @@ h1, h2 {
   color: black;
 }
 
+
+.menu::selection{
+  color:white ;
+  background: #419A1C !important;
+}
+
+.spin {
+  color:  #419A1C;
+}
+
 .link {
  color:  #419A1C;
-} */
-
+} 
 
 
 

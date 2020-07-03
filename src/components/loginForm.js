@@ -101,6 +101,7 @@ class loginForm extends React.Component {
 
         <Form.Item>
             <Button 
+                type='submit'
                 className="btn-primary"
                 onClick={this.handleLoginSubmit}>
             Log In
