@@ -11,15 +11,16 @@ class MyHikesPage extends React.Component{
         const incompletedHikes = this.props.myHikes.filter(hike=> hike.completed === false)
         
         return(
-            <div>
+            <div className='myHikes'>
                 <SearchBar 
                     handleSearchTerm={this.props.handleSearchTerm} 
                     searchTerm={this.props.searchTerm}/>
+                {this.props.searchTerm.length > 0? <div>Search results for '{this.props.searchTerm}'...</div>: null }
                 <div>
                      {completedHikes.length > 0 ?
                     <div>
-                    <h2> My Completed Hikes </h2>  
-                     <Row> {completedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} 
+                    <h2 className='sideTitle'> My Completed Hikes </h2>  
+                     <Row className='trailsContainerRow'> {completedHikes.map(h => < Trail handleRemoveHike={this.props.handleRemoveHike} 
                                                             hike={this.props.myHikes.find(hike => hike.id === h.id)}
                                                             handlePatchHike={this.props.handlePatchHike} 
                                                             trail={h.trail} 
@@ -33,8 +34,8 @@ class MyHikesPage extends React.Component{
                 <div>
                      {incompletedHikes.length > 0 ? 
                      <div>
-                    <h2> I want to hike... </h2> 
-                     <Row> { incompletedHikes.map(h => < Trail 
+                    <h2 className='sideTitle'>My Saved Hikes </h2> 
+                     <Row className='trailsContainerRow'> { incompletedHikes.map(h => < Trail 
                                                         hike={this.props.myHikes.find(hike=> hike.id === h.id)}
                                                         handleRemoveHike={this.props.handleRemoveHike} 
                                                         handlePatchHike={this.props.handlePatchHike} 

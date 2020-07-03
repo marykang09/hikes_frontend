@@ -10,6 +10,7 @@ class TrailsPage extends React.Component{
         return (
             <div> 
                 < SearchBar handleSearchTerm={this.props.handleSearchTerm} searchTerm={this.props.searchTerm}/>
+                {this.props.searchTerm.length > 0? <div>Search results for '{this.props.searchTerm}'...</div>: null }
                 < TrailsContainer 
                                 handleRemoveHike={this.props.handleRemoveHike}
                                 handlePatchHike={this.props.handlePatchHike}

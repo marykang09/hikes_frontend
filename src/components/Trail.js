@@ -76,7 +76,7 @@ class Trail extends React.Component {
     render () {
         const {name, location, img_medium, id, condition_status} = this.props.trail
         return(  
-            <Col  flex="auto">
+          
                 <Card  
                     hoverable
                     style={{ width: 400 }}
@@ -99,7 +99,7 @@ class Trail extends React.Component {
                         style={{align: 'center'}}
                         /> </Link>
                  </Card>
-            </Col>
+         
     )
      }
 }
