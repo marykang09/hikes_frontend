@@ -8,7 +8,7 @@ import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/LoginForm'
 import SignUpForm from './components/SignUp'
 import FourOhFour from './containers/FourOhFour'
-// import { Spin } from 'antd';
+import { Spin } from 'antd';
 import './App.css';
 
 
@@ -19,7 +19,8 @@ class App extends React.Component{
           trails: [],
           currentUser: null,
           myHikes: [],
-          searchTerm: ""
+          searchTerm: "",
+          loading: true
       }
   }
 
@@ -29,7 +30,8 @@ class App extends React.Component{
       .then(resp => resp.json())
       .then(data => {
           this.setState({
-              trails: data
+              trails: data,
+              loading: false
         })})
        
       //check if user is logged in and authenticated
@@ -55,22 +57,11 @@ class App extends React.Component{
     })
   }
 
-  fetchUserHikes = (user) => {
-    fetch(`http://localhost:3000/users/${user.id}`)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        myHikes: data.hikes
-      })
-    })
-
-  }
-
   changeCurrentUser = (user) => {
     this.setState({
-      currentUser: user
+      currentUser: user,
+      myHikes: user.hikes
     })
-    this.fetchUserHikes(user)
   }
 
   handlePatchHike = (hike, obj) => {
@@ -157,7 +148,9 @@ class App extends React.Component{
           currentUser={this.state.currentUser} 
           handleLogout={this.handleLogout} />
         </div>
+        
         <div className="main">
+        {this.state.loading? <Spin size='large' /> :
         <Switch>
         <Route 
           exact path="/" 
@@ -204,7 +197,7 @@ class App extends React.Component{
               this.state.currentUser === null? < LoginForm 
                                                   changeCurrentUser={this.changeCurrentUser}/> : <Redirect to="/myhikes"/> } />
          <Route render={FourOhFour}/>
-        </Switch>
+        </Switch>}
         </div>
     </div>
       )
