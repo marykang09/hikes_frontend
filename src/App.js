@@ -6,7 +6,7 @@ import About from './containers/About'
 import TrailsShowPage from './containers/TrailsShowPage'
 import MyHikesPage from './containers/MyHikesPage'
 import LoginForm from './components/LoginForm'
-import SignUpForm from './components/SignUpForm'
+import SignUpForm from './components/SignUp'
 import FourOhFour from './containers/FourOhFour'
 // import { Spin } from 'antd';
 import './App.css';

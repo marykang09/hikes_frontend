@@ -52,6 +52,7 @@ class loginForm extends React.Component {
     render(){
         return (
         <Col span={8} style={{margin: 'auto'}}>
+            <h1>Login</h1>
         <Form
         name="normal_login"
         className="login-form"
