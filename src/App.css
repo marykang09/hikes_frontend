@@ -101,7 +101,7 @@ h1, h2 {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #419A1C;
 }
 
 .signUpForm {
@@ -118,4 +118,32 @@ h1, h2 {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+a {
+  color: #265D0C !important;
+}
+a:hover {
+  color: #265D0C!important;
+}
+a:active {
+  color: #265D0C !important;
+}
+
+
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: #265D0C;
+  border-bottom: 2px solid #265D0C;
+}
+
+.anticon:hover{
+  color:  #419A1C !important;
 }

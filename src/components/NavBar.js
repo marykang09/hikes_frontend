@@ -58,17 +58,10 @@ class NavBar extends React.Component{
                   {this.props.currentUser === null? 
                   <Menu.Item key="login" onClick={this.showLogin}>
                       <Link to="/login">Login</Link>
-                      {/* <Modal
-                          title="Login"
-                          visible={this.state.loginVisible}
-                          onOk={() => this.handleOk.bind(this)}
-                          onCancel={() => this.handleCancel.bind(this)}
-                          >
-                          <LoginForm />
-                      </Modal>  */}
+                    
                   </Menu.Item>
                   : 
-                        <Menu.Item key="my-hikes"icon={<UserOutlined />} >
+                        <Menu.Item key="my-hikes"icon={<UserOutlined style={{color: '//#region 419A1C'}}/>} >
                           <Link to="/myhikes">My Hikes</Link>
                         </Menu.Item>
                     }
