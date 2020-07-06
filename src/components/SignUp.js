@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import { Form, Input, Col, Button} from 'antd'
 // import {Button} from 'react-bootstrap'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+const URL = 'http://localhost:3000/'
 
 class SignUp extends React.Component{
     constructor(){
@@ -30,7 +31,7 @@ class SignUp extends React.Component{
     }
 
     validateUsername = (username) => {
-        fetch('http://localhost:3000/users')
+        fetch(URL +'users')
         .then(res => res.json())
         .then(users => {
            if (users.find(u => u.username === username)){

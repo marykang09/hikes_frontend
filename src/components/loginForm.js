@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 // import {Button} from 'react-bootstrap'
 
 import React from 'react'
-
+const URL = 'http://localhost:3000/'
 class loginForm extends React.Component {
 
     constructor(){
@@ -27,7 +27,7 @@ class loginForm extends React.Component {
             username: this.state.username,
             password: this.state.password
         }     
-        fetch("http://localhost:3000/login", {
+        fetch(URL + "login", {
             method:"POST",
             headers: {
               "Content-Type" : "application/json"

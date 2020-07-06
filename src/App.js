@@ -28,7 +28,7 @@ class App extends React.Component{
 
   componentDidMount(){
       //fetch trails
-      fetch('http://localhost:3000/trails')
+      fetch(URL + 'trails')
       .then(resp => resp.json())
       .then(data => {
           this.setState({
@@ -39,7 +39,7 @@ class App extends React.Component{
       //check if user is logged in and authenticated
       if(localStorage.getItem("token")){
         //fetch request with new route
-        fetch('http://localhost:3000/users/decode_token', {
+        fetch(URL+'users/decode_token', {
           headers: {
             "Authenticate": localStorage.token
           }
@@ -67,7 +67,7 @@ class App extends React.Component{
   }
 
   handlePatchHike = (hike, obj) => {
-    fetch(`http://localhost:3000/hikes/${hike.id}`, {
+    fetch( URL +`/hikes/${hike.id}`, {
         method: 'PATCH',
         headers: {'Content-Type' : 'application/json' },
         body: JSON.stringify(obj)
@@ -84,7 +84,7 @@ class App extends React.Component{
   handleNewHike = (obj) => {
     if (this.state.currentUser){
       obj.user_id = this.state.currentUser.id
-      fetch("http://localhost:3000/hikes", {
+      fetch(URL + "hikes", {
         method: 'POST',
         headers: {'Content-Type' : 'application/json' },
         body: JSON.stringify(obj)
@@ -102,7 +102,7 @@ class App extends React.Component{
   }
 
   handleRemoveHike = (hike) => {
-    fetch(`http://localhost:3000/hikes/${hike.id}`, {
+    fetch( URL +`hikes/${hike.id}`, {
         method: 'DELETE' })
 
     let updatedMyHikes = this.state.myHikes.filter(h => h.id !== hike.id)
@@ -118,7 +118,7 @@ class App extends React.Component{
       username: userObj.username,
       password: userObj.password
     }
-    fetch("http://localhost:3000/users", {
+    fetch(URL + "users", {
       method: 'POST',
       headers: {'Content-Type' : 'application/json' },
       body: JSON.stringify(obj)
