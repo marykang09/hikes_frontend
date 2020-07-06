@@ -53,6 +53,9 @@ class NavBar extends React.Component{
                       <Link to="/">Trails</Link>
                   </Menu.Item>
                   
+                  <Menu.Item key="about"  icon={<BulbOutlined />}>
+                      <Link to="/about">About</Link>
+                  </Menu.Item>
 
 
                   {this.props.currentUser === null? 
@@ -61,14 +64,18 @@ class NavBar extends React.Component{
                     
                   </Menu.Item>
                   : 
-                        <Menu.Item key="my-hikes"icon={<UserOutlined style={{color: '//#region 419A1C'}}/>} >
+                        <Menu.Item key="my-hikes"icon={<UserOutlined />} >
                           <Link to="/myhikes">My Hikes</Link>
                         </Menu.Item>
                     }
+                  {this.props.currentUser === null? 
+                    null
+                  : 
+                        <Menu.Item key="my-hikes">
+                          <Link to="/myhikes">@{this.props.currentUser.username}</Link>
+                        </Menu.Item>
+                    }
 
-                  <Menu.Item key="about"  icon={<BulbOutlined />}>
-                      <Link to="/about">About</Link>
-                  </Menu.Item>
 
                 {this.props.currentUser === null?
                     null : 

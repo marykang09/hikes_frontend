@@ -62,7 +62,7 @@ h1, h2 {
   background: #419A1C !important;
 }
 
-.spin {
+.ant-spin {
   color:  #419A1C;
 }
 
@@ -70,7 +70,9 @@ h1, h2 {
  color:  #419A1C;
 } 
 
-
+/* .ant-spin-dot-item, .ant-spin, .ant-spin-lg, .ant-spin-spinning, .ant-spin-dot, .ant-spin-dot-spin {
+  color:  #419A1C !important;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -82,6 +84,9 @@ h1, h2 {
   justify-content: space-around;
 }
 
+.ant-rate {
+  color: #265D0C
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
