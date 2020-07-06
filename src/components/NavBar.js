@@ -68,10 +68,11 @@ class NavBar extends React.Component{
                           <Link to="/myhikes">My Hikes</Link>
                         </Menu.Item>
                     }
+
                   {this.props.currentUser === null? 
                     null
                   : 
-                        <Menu.Item key="my-hikes">
+                        <Menu.Item key="username">
                           <Link to="/myhikes">@{this.props.currentUser.username}</Link>
                         </Menu.Item>
                     }
