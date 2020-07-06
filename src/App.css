@@ -34,27 +34,23 @@ h1, h2 {
   color: #265D0C;
 }
 
-.btn-primary {
-  background-color: #F2AF58;
-  border: #F2AF58;
-}
-
-.btn-primary:hover{
-  background-color: #419A1C;
-  border: #419A1C;
-  color: black;
-}
-
-.btn-light {
-  background-color: #419A1C;
-  border: #419A1C;
-}
-
-.btn-light:hover{
+.btn-primary, .btn-primary:hover {
   background-color: #F2AF58;
   border: #F2AF58;
   color: black;
 }
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-light, .btn-light:hover {
+  background-color: #419A1C;
+  border: #419A1C;
+  color: black
+}
+
 
 
 .menu::selection{
@@ -77,6 +73,17 @@ h1, h2 {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.commentCard {
+  width: 100%;
+  text-align: left;
+}
+
+.commentsContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .aboutRow {

@@ -71,7 +71,6 @@ const TrailDetails = (props) => {
     }
 
     return(
-        <Col span={8} style={{margin: 'auto'}}> 
         <Card
             bordered= "false" 
             style={{ width: 500 }}
@@ -88,9 +87,7 @@ const TrailDetails = (props) => {
             description={getDescription()}
             />
             <GoogleMaps longitude={longitude} latitude={latitude}/>
-      </Card>
-      </Col>
-        
+      </Card> 
     )
 }
 

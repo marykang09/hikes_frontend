@@ -99,6 +99,7 @@ class Trail extends React.Component {
                         style={{align: 'center'}}
                         /> </Link>
                  </Card>
+               
          
     )
      }

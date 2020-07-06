@@ -11,8 +11,10 @@ import FourOhFour from './containers/FourOhFour'
 import { Spin } from 'antd';
 import './App.css';
 
+const URL = 'http://localhost:3000/'
 
 class App extends React.Component{
+
     constructor(){
       super()
       this.state = {
@@ -129,6 +131,54 @@ class App extends React.Component{
     
   }
 
+  postComment = (obj) => {
+    let newObj = {
+      ...obj,
+      user_id: this.state.currentUser.id
+    }
+    fetch(URL + `comments`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newObj)
+    }).then(res => res.json())
+    .then(comment => {
+      let trails = this.state.trails.map( t => {
+        if (t.id === comment.trail_id){
+          let newComments = [comment, ...t.comments]
+          return {
+            ...t,
+            comments: newComments
+          }
+        }else{
+        return t 
+      }})
+      this.setState({
+        trails: trails
+      })
+    })
+  }
+
+  deleteComment = (commentId, trailId) => {
+    fetch(URL +`comments/${commentId}`, {
+      method: 'DELETE',
+    })
+    let trails = this.state.trails.map( t => {
+      if (t.id === trailId){
+        let newComments = [...t.comments].filter( c => c.id !== commentId)
+        return {
+          ...t,
+          comments: newComments
+        }
+      }
+      else{
+        return t 
+      }
+    })
+    this.setState({
+      trails: trails
+    })
+  }
+
   handleSearchTerm = (event) => {
     this.setState({
       searchTerm: event.target.value
@@ -172,6 +222,9 @@ class App extends React.Component{
                     let id = routerProps.match.params.id
                     let trailShow = this.state.trails.find(t => t.id === parseInt(id)) 
                     return (< TrailsShowPage 
+                                deleteComment={this.deleteComment}
+                                currentUser={this.state.currentUser}
+                                postComment={this.postComment}
                                 handlePatchHike={this.handlePatchHike} 
                                 handleRemoveHike={this.handleRemoveHike} 
                                 handleNewHike={this.handleNewHike} 
