@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom'
 import { Form, Input, Col, Button} from 'antd'
 // import {Button} from 'react-bootstrap'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
+//for local
 const URL = 'http://localhost:3000/'
+//for deploy
+// const URL = 'https://gettrails-backend.herokuapp.com/'
 
 class SignUp extends React.Component{
     constructor(){

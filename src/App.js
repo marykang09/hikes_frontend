@@ -11,7 +11,10 @@ import FourOhFour from './containers/FourOhFour'
 import { Spin } from 'antd';
 import './App.css';
 
+//for local
 const URL = 'http://localhost:3000/'
+// for deployment
+// const URL ='https://gettrails-backend.herokuapp.com/'
 
 class App extends React.Component{
 

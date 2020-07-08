@@ -4,7 +4,11 @@ import {Link} from "react-router-dom";
 // import {Button} from 'react-bootstrap'
 
 import React from 'react'
+
+//for local
 const URL = 'http://localhost:3000/'
+// for deployment
+// const URL = 'https://gettrails-backend.herokuapp.com/'
 class loginForm extends React.Component {
 
     constructor(){

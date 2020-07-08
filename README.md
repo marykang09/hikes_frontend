@@ -20,11 +20,7 @@ This is a trail tracking app (similar to an AllTrails Clone). Users can keep tra
 7. Open http://localhost:3001
 
 
-### Deployment
+### Deployed
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+getTrails is deployed on Netlify: https://get-trails.netlify.app/
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-\
